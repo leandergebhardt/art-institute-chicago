@@ -1,7 +1,7 @@
 <template>
 <div class="navbar">
   <b-nav pills>
-    <router-link to="/" tag="b-navbar-brand" active-class="active"><a>Brand 🚀</a></router-link>
+    <router-link to="/" tag="b-navbar-brand" active-class="active"><a>Home 🏛️</a></router-link>
     <router-link to="/projects" tag="b-nav-item" active-class="active"><a>Link 1</a></router-link>
     <router-link to="/docs" tag="b-nav-item" active-class="active"><a>Docs</a></router-link>
     <router-link to="/user" tag="b-nav-item" active-class="active"><a>Profile</a></router-link> 

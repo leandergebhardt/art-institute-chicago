@@ -39,10 +39,6 @@ export default {
     -webkit-font-smoothing: antialiased;
   }
   body {
-    background-color: #4643EC !important;
-  }
-  h1 {
-      padding: 20px;
-      color: white;
+    
   }
 </style>
