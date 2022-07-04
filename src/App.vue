@@ -39,6 +39,7 @@ export default {
     -webkit-font-smoothing: antialiased;
   }
   body {
-    
+    background-color: #4c4c4c !important;
+    color: white;
   }
 </style>

@@ -1,38 +1,45 @@
 <template>
 <div class="home">
-    <h1>Home</h1>
-    <button @click="navigateToSomeSite" class="btn btn-primary space-medium">Go some Page</button>
+    <h1>Browse</h1>
     <div class="home-component">
-        <h3>Some Header</h3>
-        <p v-if="builds" style="padding: 10px;">Some text</p>
-        <b-table v-if="builds" hover></b-table>
+        <li 
+          v-for="artwork in artworks" :key="artwork.id"
+          class="no-list"
+        >
+          <Artwork :artwork="artwork" />
+        </li>
     </div>
 </div>
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import axios from 'axios'
+  import Artwork from './Artwork.vue'
 
 export default {
   name: 'Home',
+  components: {
+    Artwork,
+  },
   created: function () {
-    this.GetProjects(this.user);
-    this.createTableWithBuilds()
+    this.GetArtworks();
   },
   mounted () {
   
   },
   computed: {
-    ...mapGetters({user: "StateUser"}),
+
   },
   data() {
     return {
-
+      artworks: {},
     }
   },
    methods: {
-    navigateToSomeSite() {
-        this.$router.push('/some-site');
+    GetArtworks() {
+        axios.get('https://ghibliapi.herokuapp.com/films').then(resp => {
+            this.artworks = resp.data;
+        });
     },
   }
 }
@@ -41,20 +48,18 @@ export default {
 <style scoped lang="scss">
   h1 {
     padding: 20px;
+    color: white;
+  }
+
+  .no-list {
+    list-style: none;
   }
 
   .home-component {
-    background: white;
-    margin: 2rem 2rem 0 15px;
-    width: 50%;
-    margin: auto;
-    color: black;
-    border-radius: 15px 15px 0 0;
-    h3{
-      color: white;
-      padding: 20px;
-      background-color: #2B1DAE;
-      border-radius: 12px 12px 0 0;
-    }
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(7, 1fr);
+    overflow: hidden;
+    padding: 20px;
   }
 </style>
