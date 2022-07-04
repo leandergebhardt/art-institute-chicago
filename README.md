@@ -1,2 +1,2 @@
-# art institute chicago
- A fun project for displaying art pices
+# Ghibliflix
+ A fun project for displaying ghibli facts
