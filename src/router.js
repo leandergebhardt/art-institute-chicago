@@ -8,6 +8,8 @@ import Home from './components/Home.vue'
 import Login from './components/user/Login.vue'
 import Register from './components/user/Register.vue'
 import SwaggerUi from './components/SwaggerUi.vue'
+import ArtworkDetail from './components/ArtworkDetail.vue'
+import People from './components/People.vue'
 // import more COMPONENTS here
 
 Vue.use(VueRouter);
@@ -38,6 +40,14 @@ export const routes = [
     path: '/user',
     component: User,
     meta: { requiresAuth: true },
+  },
+  {
+    path: '/film/:id',
+    component: ArtworkDetail,
+  },
+  {
+    path: '/people',
+    component: People,
   },
   // more ROUTES here
   

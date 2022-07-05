@@ -1,12 +1,14 @@
 <template>
   <div class="artwork-wrapper">
     <div class="artwork-image">
-        <img 
-          :src="artwork.movie_banner" 
-          alt="artwork" 
-          @mouseover="show = true"
-          @mouselave="show = false" 
-        />
+        <router-link :to='"/film/" + artwork.id' tag="b-nav-item" active-class="active">
+          <img 
+            :src="artwork.movie_banner" 
+            alt="artwork" 
+            @mouseover="show = true"
+            @mouselave="show = false"
+          />
+        </router-link>
         <p 
           class="movie-title">
           {{ artwork.title }}
