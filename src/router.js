@@ -10,6 +10,8 @@ import Register from './components/user/Register.vue'
 import SwaggerUi from './components/SwaggerUi.vue'
 import ArtworkDetail from './components/ArtworkDetail.vue'
 import People from './components/People.vue'
+import Person from './components/Person.vue'
+import Species from './components/Species.vue'
 // import more COMPONENTS here
 
 Vue.use(VueRouter);
@@ -48,6 +50,18 @@ export const routes = [
   {
     path: '/people',
     component: People,
+  },
+  {
+    path: '/person/:id',
+    component: Person,
+  },
+  {
+    path: '/species/:id',
+    component: Species,
+  },
+  {
+    path: '/vehicle/:id',
+    component: Species,
   },
   // more ROUTES here
   

@@ -17,43 +17,39 @@
         <p><strong>Rotten Tomatos: </strong> {{ film.rt_score }} <b-icon-award></b-icon-award></p>
     </div>
     <div class="objects">
-        <b-dropdown text="People">
+        <b-dropdown variant="success" text="People" class="m-2">
             <b-dropdown-item 
                 href="#" 
-                v-for="people in film.people" 
-                :key="people"
+                v-for="person in peoples" 
+                :key="person.id"
             >
-                {{people}}
+            <router-link :to='"/person/" + person.id' active-class="active" class="black">
+                {{ person.name }}
+            </router-link>
             </b-dropdown-item>
         </b-dropdown>
 
-        <b-dropdown text="species">
+        <b-dropdown variant="success" text="species" class="m-2">
             <b-dropdown-item 
                 href="#"
-                v-for="species in film.species" 
-                :key="species"
+                v-for="species in species" 
+                :key="species.id"
             >
-                {{species}}
+            <router-link :to='"/species/" + species.id' active-class="active" class="black">
+                {{ species.name }}
+            </router-link>
             </b-dropdown-item>
         </b-dropdown>
 
-        <b-dropdown text="locations">
+        <b-dropdown variant="success" text="vehicles" class="m-2">
             <b-dropdown-item 
                 href="#"
-                v-for="location in film.locations" 
-                :key="location"
+                v-for="vehicle in vehicles" 
+                :key="vehicle.id"
             >
-                {{location}}
-            </b-dropdown-item>
-        </b-dropdown>
-
-        <b-dropdown text="vehicles">
-            <b-dropdown-item 
-                href="#"
-                v-for="vehicle in film.vehicles" 
-                :key="vehicle"
-            >
-                {{vehicle}}
+            <router-link :to='"/vehicle/" + vehicle.id' active-class="active" class="black">
+                {{ vehicle.name }}
+            </router-link>
             </b-dropdown-item>
         </b-dropdown>
     </div>
@@ -69,6 +65,9 @@ export default {
         return {
             film: {},
             peoples: [],
+            species: [],
+            vehicles: [],
+            locations: [],
         }
     },
     created() {
@@ -76,8 +75,14 @@ export default {
 
         console.log(filmID);
         this.getFilm(filmID);
-        // if(this.film)
-        //     this.getPeople();
+    },
+    watch: {
+        film() {
+            this.GetPeople();
+            this.GetSpecies();
+            this.GetVehicles();
+            this.GetLocations();
+        }
     },
     methods: {
         getFilm(filmId) {
@@ -85,11 +90,34 @@ export default {
                 this.film = resp.data;
             });
         },
-        getPeople() {
+        GetPeople() {
             for(let index = 0; index < this.film.people.length; index++) {
-                let person = this.film.people[index];
-                axios.get(person).then(resp => {
-                    this.peoples.push(resp);
+                axios.get(this.film.people[index]).then(resp => {
+                    this.peoples.push(resp.data);
+                });
+                
+            }
+        },
+        GetSpecies() {
+            for(let index = 0; index < this.film.species.length; index++) {
+                axios.get(this.film.species[index]).then(resp => {
+                    this.species.push(resp.data);
+                });
+                
+            }
+        },
+        GetVehicles() {
+            for(let index = 0; index < this.film.vehicles.length; index++) {
+                axios.get(this.film.vehicles[index]).then(resp => {
+                    this.vehicles.push(resp.data);
+                });
+                
+            }
+        },
+        GetLocations() {
+            for(let index = 0; index < this.film.locations.length; index++) {
+                axios.get(this.film.locations[index]).then(resp => {
+                    this.locations.push(resp.data);
                 });
                 
             }
@@ -107,8 +135,8 @@ export default {
   color: white;
 }
 
-.film-image {
-
+.black {
+    color: black;
 }
 
 .description {

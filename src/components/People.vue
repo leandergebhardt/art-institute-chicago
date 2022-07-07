@@ -2,6 +2,9 @@
 <div>
   <h1>People</h1>
   <b-form-input class="search-field" v-model="searchName" placeholder="Enter name here"></b-form-input>
+  <!-- <b-dropdown id="dropdown-1" text="Dropdown Button" class="m-md-2">
+    <b-dropdown-item v-for="film in films" :key="film.id">{{ film.title }}</b-dropdown-item>
+  </b-dropdown> -->
     <b-list-group class="container">
         <b-list-group-item class="d-flex align-items-center" v-for="person in filteredPeople" :key="person.id">
         <router-link :to='"/person/" + person.id' active-class="active" class="no-styling">
