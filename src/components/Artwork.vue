@@ -3,7 +3,7 @@
     <div class="artwork-image">
         <router-link :to='"/film/" + artwork.id' active-class="active">
           <img 
-            :src="artwork.movie_banner" 
+            :src="show ? artwork.movie_banner : artwork.image" 
             alt="film-banner" 
             @mouseover="show = true"
             @mouseleave="show = false"
@@ -143,6 +143,7 @@ export default {
 .artwork-image img:hover {
     cursor: pointer;
     transform: scale(1.06);
+
 
     -webkit-box-shadow: 10px 10px 25px -6px rgba(255,255,255,1);
     -moz-box-shadow: 10px 10px 25px -6px rgba(255,255,255,1);
