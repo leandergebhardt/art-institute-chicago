@@ -12,6 +12,8 @@ import ArtworkDetail from './components/ArtworkDetail.vue'
 import People from './components/People.vue'
 import Person from './components/Person.vue'
 import Species from './components/Species.vue'
+import Locations from './components/Locations.vue'
+import Location from './components/Location.vue'
 // import more COMPONENTS here
 
 Vue.use(VueRouter);
@@ -62,6 +64,14 @@ export const routes = [
   {
     path: '/vehicle/:id',
     component: Species,
+  },
+  {
+    path: '/locations',
+    component: Locations,
+  },
+  {
+    path: '/location/:id',
+    component: Location,
   },
   // more ROUTES here
   

@@ -1,6 +1,6 @@
 <template>
 <div class="person-wrapper">
-  <h1>{{ person.name }}</h1>
+  <h1 class="white-headline"><b-icon-person-circle></b-icon-person-circle> {{ person.name }}</h1>
   <div class="person-container">
     <div class="person-details">
       <h2 class="headline">Infos</h2>
@@ -18,7 +18,7 @@
       <hr>
       <ul>
         <li v-for="film in films" :key="film.id" class="list-item">
-          <router-link :to='"/film/" + film.id' tag="b-nav-item" active-class="active">
+          <router-link :to='"/film/" + film.id' active-class="active" class="white">
             {{ film.title }}
           </router-link>
         </li>
@@ -86,8 +86,15 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+a {
+  color: white;
+}
 
+a:hover {
+  color: white;
+  font-weight: 600;
+}
 .person-container {
   display: flex;
   flex-direction: row;
@@ -108,15 +115,18 @@ export default {
   text-align: left;
   width: 300px;
   margin: auto;
-}
-
-.list-item a{
-  color: white;
-  text-decoration: underline;
+  -webkit-box-shadow: 10px 10px 25px -6px rgba(255,255,255,1);
+  -moz-box-shadow: 10px 10px 25px -6px rgba(255,255,255,1);
+  box-shadow: 10px 10px 25px -6px rgba(255,255,255,1);
 }
 
 .white {
   color: white;
+}
+
+.white-headline {
+  color: white;
+  margin: 25px;
 }
 
 </style>

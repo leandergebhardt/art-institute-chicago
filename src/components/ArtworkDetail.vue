@@ -126,7 +126,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 .artwork-detials-wrapper {
     margin: 50px 0;
 }

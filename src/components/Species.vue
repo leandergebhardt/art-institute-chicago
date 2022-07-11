@@ -96,7 +96,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 
 .person-container {
   display: flex;

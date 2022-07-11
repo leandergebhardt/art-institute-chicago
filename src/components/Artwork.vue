@@ -6,22 +6,43 @@
             :src="artwork.movie_banner" 
             alt="artwork" 
             @mouseover="show = true"
-            @mouselave="show = false"
+            @mouseleave="show = false"
           />
-        </router-link>
-        <p 
-          class="movie-title">
-          {{ artwork.title }}
-        </p>
         <Transition name="slide">
-          <div>
+          <div 
+            class="info-box" 
+            v-show="show"
+            @mouseover="show = true"
+          >
             <p 
-              v-show="show" 
-              class="movie-description">
+              class="movie-title">
+              {{ artwork.title }}
+            </p>
+            <p 
+              class="movie-description"
+            >
               {{ artwork.original_title }}
             </p>
+            <div class="movie-details">
+              <p 
+                class="movie-duration"
+              >
+                <b-icon-clock></b-icon-clock> {{ artwork.running_time }} min
+              </p>
+              <p 
+                class="movie-duration"
+              >
+                <b-icon-person-circle></b-icon-person-circle> {{ artwork.director }}
+              </p>
+              <p 
+                class="movie-duration"
+              >
+                <b-icon-star-fill></b-icon-star-fill> {{ artwork.rt_score }}
+              </p>
+            </div>
           </div>
-        </Transition>
+          </Transition>
+        </router-link>
     </div>
   </div>
 </template>
@@ -50,10 +71,29 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+
+.artwork-wrapper {
+  position: relative;
+}
 
 .movie-title {
   color: white;
+}
+
+.movie-description {
+  color: rgb(161, 242, 255);
+}
+
+.movie-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.movie-duration {
+  color: white;
+  font-size: 11px;
+  font-weight: 500;
 }
 
 /* Animation */
@@ -80,7 +120,7 @@ export default {
 }
 
 .slide-enter-to, .slide-leave {
-   max-height: 100px;
+   max-height: 100%;
    overflow: hidden;
 }
 
@@ -108,4 +148,17 @@ export default {
 .artwork-image img {
     transition: all 1.75s ease-in-out;
 }
+
+.info-box {
+  position: absolute;
+  bottom: 20px;
+  left: 25px;
+  background-color: #5c5c5c7b;
+  text-align: left;
+  min-width: 230px;
+  max-width: 230px;
+  border-radius: 12px;
+  padding: 10px;
+}
+
 </style>

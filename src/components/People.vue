@@ -49,12 +49,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 
-    .container {
-        max-width: 600px;
-        margin: 50px auto;
-    }
+  .container {
+      max-width: 600px;
+      margin: 50px auto;
+  }
 
  h1 {
     padding: 20px;

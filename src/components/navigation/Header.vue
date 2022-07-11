@@ -4,8 +4,8 @@
     <router-link to="/" tag="b-navbar-brand" active-class="active"><a>Home 🏛️</a></router-link>
     <router-link to="/people" tag="b-nav-item" active-class="active"><a>People 🫂</a></router-link>
     <router-link to="/species" tag="b-nav-item" active-class="active"><a>Species</a></router-link>
-    <router-link to="/user" tag="b-nav-item" active-class="active"><a>Locations</a></router-link>
-    <router-link to="/user" tag="b-nav-item" active-class="active"><a>Vehicles</a></router-link>
+    <router-link to="/locations" tag="b-nav-item" active-class="active"><a>Locations</a></router-link>
+    <router-link to="/vehicles" tag="b-nav-item" active-class="active"><a>Vehicles</a></router-link>
     <span v-if="isLoggedIn">
       <b-nav-item><a @click="logout"><b-icon-box-arrow-left style="color=white"></b-icon-box-arrow-left> Logout</a></b-nav-item>
     </span>
