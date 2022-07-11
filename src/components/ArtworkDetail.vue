@@ -1,7 +1,9 @@
 <template>
   <div class="artwork-detials-wrapper">
     <h2 class="film-title">{{ film.title }}</h2>
-    <h3 class="original-titels">{{ film.original_title }} ( {{ film.original_title_romanised }} )</h3>
+    <h3 class="original-titels">
+        {{ film.original_title }} ( {{ film.original_title_romanised }} )
+    </h3>
 
     <img 
         class="film-image" 
@@ -10,17 +12,17 @@
     >
     <p class="description">{{ film.description }}</p>
     <div class="film-info">
-        <p><strong>Director:</strong> {{ film.director }}</p>
-        <p><strong>Producer:</strong> {{ film.producer }}</p>
+        <p><strong>Director(s):</strong> {{ film.director }}</p>
+        <p><strong>Producer(s):</strong> {{ film.producer }}</p>
         <p><strong>Release Date: </strong> {{ film.release_date }}</p>
         <p><b-icon-clock></b-icon-clock> {{ film.running_time }} min</p>
-        <p><strong>Rotten Tomatos: </strong> {{ film.rt_score }} <b-icon-award></b-icon-award></p>
+        <p><strong>Rotten Tomatos: </strong> {{ film.rt_score }} 🍅</p>
     </div>
     <div class="objects">
         <b-dropdown variant="success" text="People" class="m-2">
             <b-dropdown-item 
                 href="#" 
-                v-for="person in peoples" 
+                v-for="person in people" 
                 :key="person.id"
             >
             <router-link :to='"/person/" + person.id' active-class="active" class="black">
@@ -64,7 +66,7 @@ export default {
     data() {
         return {
             film: {},
-            peoples: [],
+            people: [],
             species: [],
             vehicles: [],
             locations: [],
@@ -91,27 +93,39 @@ export default {
             });
         },
         GetPeople() {
-            for(let index = 0; index < this.film.people.length; index++) {
-                axios.get(this.film.people[index]).then(resp => {
-                    this.peoples.push(resp.data);
-                });
-                
+            if(this.film.people[0] == 'https://ghibliapi.herokuapp.com/people/'){
+                this.people = [{name: 'No people specified'}];
+            } else {
+                for(let index = 0; index < this.film.people.length; index++) {
+                    axios.get(this.film.people[index]).then(resp => {
+                        this.people.push(resp.data);
+                    });
+                    
+                }
             }
         },
         GetSpecies() {
-            for(let index = 0; index < this.film.species.length; index++) {
-                axios.get(this.film.species[index]).then(resp => {
-                    this.species.push(resp.data);
-                });
-                
+            if(this.film.species[0] == 'https://ghibliapi.herokuapp.com/species/'){
+                this.species = [{name: 'No species specified'}];
+            } else {
+                for(let index = 0; index < this.film.species.length; index++) {
+                    axios.get(this.film.species[index]).then(resp => {
+                        this.species.push(resp.data);
+                    });
+                    
+                }
             }
         },
         GetVehicles() {
-            for(let index = 0; index < this.film.vehicles.length; index++) {
-                axios.get(this.film.vehicles[index]).then(resp => {
-                    this.vehicles.push(resp.data);
-                });
-                
+            if(this.film.vehicles[0] == 'https://ghibliapi.herokuapp.com/vehicles/'){
+                this.vehicles = [{name: 'No vehicles'}];
+            } else {
+                for(let index = 0; index < this.film.vehicles.length; index++) {
+                    axios.get(this.film.vehicles[index]).then(resp => {
+                        this.vehicles.push(resp.data);
+                    });
+                    
+                }
             }
         },
         GetLocations() {
@@ -131,6 +145,10 @@ export default {
     margin: 50px 0;
 }
 
+.original-titels {
+    color: rgb(161, 242, 255);
+}
+
 .film-title {
   color: white;
 }
@@ -141,8 +159,9 @@ export default {
 
 .description {
     color: white;
-    font-size: 21px;
-    margin: 2rem 8rem;
+    font-size: 18px;
+    line-height: 1.4rem;
+    margin: 2rem 40%;
     text-align: left;
 }
 
@@ -156,6 +175,11 @@ export default {
     color: white;
     padding: 25px;
     text-align: left;
+    max-width: 300px;
+}
+
+.film-image {
+    height: 400px;
 }
 
 </style>

@@ -1,10 +1,10 @@
 <template>
   <div class="artwork-wrapper">
     <div class="artwork-image">
-        <router-link :to='"/film/" + artwork.id' tag="b-nav-item" active-class="active">
+        <router-link :to='"/film/" + artwork.id' active-class="active">
           <img 
             :src="artwork.movie_banner" 
-            alt="artwork" 
+            alt="film-banner" 
             @mouseover="show = true"
             @mouseleave="show = false"
           />
@@ -143,6 +143,10 @@ export default {
 .artwork-image img:hover {
     cursor: pointer;
     transform: scale(1.06);
+
+    -webkit-box-shadow: 10px 10px 25px -6px rgba(255,255,255,1);
+    -moz-box-shadow: 10px 10px 25px -6px rgba(255,255,255,1);
+    box-shadow: 10px 10px 25px -6px rgba(255,255,255,1);
 }
 
 .artwork-image img {
@@ -151,14 +155,20 @@ export default {
 
 .info-box {
   position: absolute;
-  bottom: 20px;
-  left: 25px;
+  bottom: 10px;
+  left: 10px;
   background-color: #5c5c5c7b;
   text-align: left;
   min-width: 230px;
   max-width: 230px;
   border-radius: 12px;
   padding: 10px;
+}
+
+.film-item {
+  margin: 15px 10px;
+  width: 250px;
+  height: 250px;
 }
 
 </style>

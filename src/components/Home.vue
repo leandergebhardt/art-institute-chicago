@@ -53,6 +53,7 @@ export default {
 
   .no-list {
     list-style: none;
+    margin: 15px 10px;
   }
 
   .home-component {
@@ -60,6 +61,6 @@ export default {
     grid-gap: 15px;
     grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
     overflow: hidden;
-    padding: 20px;
+    padding: 0 20px;
   }
 </style>
