@@ -133,6 +133,7 @@ export default {
     width: 250px;
     height: 250px;
     object-fit: cover;
+    object-position: top;
     border-radius: 15px;
 
     -webkit-box-shadow: 10px 10px 31px -12px rgba(0,0,0,0.75);

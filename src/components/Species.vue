@@ -1,6 +1,6 @@
 <template>
 <div class="person-wrapper">
-  <h1>{{ species.name }}</h1>
+  <h1 class="white">{{ species.name }}</h1>
   <div class="person-container">
     <div class="person-details">
       <h2 class="headline">Infos</h2>
@@ -14,7 +14,7 @@
       <hr>
       <ul>
         <li v-for="film in films" :key="film.id" class="list-item">
-          <router-link :to='"/film/" + film.id' tag="b-nav-item" active-class="active">
+          <router-link :to='"/film/" + film.id' active-class="active">
             {{ film.title }}
           </router-link>
         </li>
@@ -25,7 +25,7 @@
       <hr>
       <ul>
         <li v-for="person in people" :key="person.id" class="list-item">
-          <router-link :to='"/person/" + person.id' tag="b-nav-item" active-class="active">
+          <router-link :to='"/person/" + person.id' active-class="active">
             {{ person.name }}
           </router-link>
         </li>

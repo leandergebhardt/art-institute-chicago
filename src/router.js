@@ -14,6 +14,7 @@ import Person from './components/Person.vue'
 import Species from './components/Species.vue'
 import Locations from './components/Locations.vue'
 import Location from './components/Location.vue'
+import SpeciesList from './components/SpeciesList.vue'
 // import more COMPONENTS here
 
 Vue.use(VueRouter);
@@ -56,6 +57,10 @@ export const routes = [
   {
     path: '/person/:id',
     component: Person,
+  },
+  {
+    path: '/species',
+    component: SpeciesList,
   },
   {
     path: '/species/:id',
