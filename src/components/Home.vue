@@ -61,6 +61,6 @@ export default {
     grid-gap: 15px;
     grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
     overflow: hidden;
-    padding: 0 20px;
+    padding: 0 20px 80px;
   }
 </style>

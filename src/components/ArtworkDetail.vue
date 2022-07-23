@@ -16,7 +16,7 @@
         <p><strong>Producer(s):</strong> {{ film.producer }}</p>
         <p><strong>Release Date: </strong> {{ film.release_date }}</p>
         <p><b-icon-clock></b-icon-clock> {{ film.running_time }} min</p>
-        <p><strong>Rotten Tomatos: </strong> {{ film.rt_score }} 🍅</p>
+        <p><strong>Rotten Tomatoes: </strong> {{ film.rt_score }} 🍅</p>
     </div>
     <div class="objects">
         <b-dropdown variant="success" text="People" class="m-2">
