@@ -24,7 +24,7 @@ export const routes = [
     name: 'home',
     path: '',
     component: Home,
-    meta: { requiresAuth: true },
+    meta: { guest: true },
   },
   {
     name: 'swagger',
